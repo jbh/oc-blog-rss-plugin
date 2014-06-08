@@ -55,7 +55,6 @@ class Link extends ComponentBase
         $this->defaultText = $this->page['defaultText'] = $this->property('defaultText');
         $this->iconClass = $this->page['iconClass'] = $this->property('iconClass');
         $this->defaultRssLink = $this->page['defaultRssLink'] = Settings::get('link') . "/rss.xml";
-        $this->createRss();
     }
 
     protected function loadPosts()
@@ -66,37 +65,5 @@ class Link extends ComponentBase
                      ->get();
 
         return $posts;
-    }
-
-    protected function createRss()
-    {
-        $fileContents = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" .
-                        "<rss version=\"2.0\">\n".
-                        "\t<channel>\n".
-                        "\t\t<title>" . Settings::get('title') . "</title>\n" .
-                        "\t\t<link>" . Settings::get('link') . "</link>\n" .
-                        "\t\t<description>" . Settings::get('description') . "</description>\n\n";
-
-
-        foreach($this->loadPosts() as $post)
-        {
-            $published = DateTime::createFromFormat('Y-m-d H:i:s', $post->published_at);
-
-            $fileContents .= "\t\t<item>\n" .
-                             "\t\t\t<title>" . $post->title . "</title>\n" .
-                             "\t\t\t<link>" . Settings::get('link') . Settings::get('postPage') . "/" . $post->slug . "</link>\n" .
-                             "\t\t\t<guid>" . Settings::get('link') . Settings::get('postPage') . "/" . $post->slug . "</guid>\n" .
-                             "\t\t\t<pubDate>" . $published->format('M d, Y') . "</pubDate>\n" .
-                             "\t\t\t<description>" . $post->excerpt . "</description>\n" .
-                             "\t\t</item>\n";
-
-        }
-
-        $fileContents .= "\t</channel>\n";
-        $fileContents .= "</rss>\n";
-
-        $file = File::put('rss.xml', $fileContents);
-
-        return $file;
     }
 }
