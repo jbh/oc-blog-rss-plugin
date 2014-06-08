@@ -55,6 +55,7 @@ class Link extends ComponentBase
         $this->defaultText = $this->page['defaultText'] = $this->property('defaultText');
         $this->iconClass = $this->page['iconClass'] = $this->property('iconClass');
         $this->defaultRssLink = $this->page['defaultRssLink'] = Settings::get('link') . "/rss.xml";
+        $this->feedBurnerLink = $this->page['feedBurnerLink'] = "http://feeds.feedburner.com/" . $this->feedBurnerAddress;
     }
 
     protected function loadPosts()
