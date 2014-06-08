@@ -95,7 +95,7 @@ class Link extends ComponentBase
         $fileContents .= "\t</channel>\n";
         $fileContents .= "</rss>\n";
 
-        $file = File::put('test.xml', $fileContents);
+        $file = File::put('rss.xml', $fileContents);
 
         return $file;
     }
