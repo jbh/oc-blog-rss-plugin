@@ -1,2 +1,4 @@
 1.0.1:
     - Initialize plugin
+1.0.2:
+    - Fixed the rss.xml file to update when saving creating or deleting a blog post
