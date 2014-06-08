@@ -1,0 +1,12 @@
+<a href="
+    {% if feedBurnerAddress %}
+        http://feeds.feedburner.com/{{ feedBurnerAddress }}
+    {% else %}
+        {{ defaultRssLink }}
+    {% endif %}" target="_blank">
+    {% if iconClass %}
+        <i class="{{ iconClass }}"></i>
+    {% else %}
+        {{ defaultText }}
+    {% endif %}
+</a>
