@@ -31,6 +31,7 @@ class Plugin extends PluginBase
 
     public function boot()
     {
+        // Event Listeners for RainLab Blog
         Event::listen('eloquent.created: RainLab\Blog\Models\Post', function($model) {
             $this->createRss();
         });
@@ -38,6 +39,11 @@ class Plugin extends PluginBase
             $this->createRss();
         });
         Event::listen('eloquent.deleted: RainLab\Blog\Models\Post', function($model) {
+            $this->createRss();
+        });
+
+        // Event Listeners for SoBoRed settings
+        Event::listen('eloquent.saved: SoBoRed\Rss\Models\Settings', function($model) {
             $this->createRss();
         });
     }
