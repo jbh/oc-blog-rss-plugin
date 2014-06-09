@@ -6,7 +6,7 @@ This plugin creates and updates an rss.xml file for blog posts. It also comes wi
 
 
 ## Installation/Setup
----
+===
 
 1. Install the plugin itself by either adding it to your project, or going to System > Updates and searching for **SoBoRed.Rss**
 2. Click System from the main menu of the backend.
@@ -37,7 +37,8 @@ The Site and Blog information is used during the creation of the RSS xml file:
 
 
 ## Usage
----
+===
+
 ### 1. Using the optional link component:
 
 + There should now be a component under the component menu for Link to RSS Feed.
@@ -48,7 +49,7 @@ The Site and Blog information is used during the creation of the RSS xml file:
   + Icon Class(es) - This is the icon class(es). It is used for the RSS link: `<a><i class="icon icon-rss"></i></a>`. If left blank, the link will just display the default link text.
 
 ```twig
-<a href="http://feeds.feedburner.com/{{ feedBurnerAddress }}" target="_blank">
+<a href="{{ feedBurnerAddress ? feedBurnerLink : defaultRssLink}}" target="_blank">
     {% if iconClass %}
         <i class="{{ iconClass }}"></i>
     {% else %}
@@ -61,6 +62,5 @@ The Site and Blog information is used during the creation of the RSS xml file:
 
 The included component is completely optional. It is only included for convenience. You can link to the generated RSS file in any fashion that you want.
 
-## TODO
----
-+ Make the XML output more customizable
+### Note
+> If you're using version control for your website, you may want to include the rss.xml file in your .gitignore to keep it separate from the production content.
