@@ -65,12 +65,12 @@ class Plugin extends PluginBase
     protected function createRss()
     {
         $fileContents = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" .
-                        "<rss version=\"2.0\">\n".
+                        "<rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n".
                         "\t<channel>\n".
                         "\t\t<title>" . Settings::get('title') . "</title>\n" .
                         "\t\t<link>" . Settings::get('link') . "</link>\n" .
-                        "\t\t<description>" . Settings::get('description') . "</description>\n\n";
-
+                        "\t\t<description>" . Settings::get('description') . "</description>\n".
+                        "\t\t<atom:link href=\"" . Settings::get('link') . "/rss.xml\" rel=\"self\" type=\"application/rss+xml\" />\n\n";
 
         foreach($this->loadPosts() as $post)
         {
@@ -80,7 +80,7 @@ class Plugin extends PluginBase
                              "\t\t\t<title>" . $post->title . "</title>\n" .
                              "\t\t\t<link>" . Settings::get('link') . Settings::get('postPage') . "/" . $post->slug . "</link>\n" .
                              "\t\t\t<guid>" . Settings::get('link') . Settings::get('postPage') . "/" . $post->slug . "</guid>\n" .
-                             "\t\t\t<pubDate>" . $published->format('M d, Y') . "</pubDate>\n" .
+                             "\t\t\t<pubDate>" . $published->format('D, d M Y H:i:s T') . "</pubDate>\n" .
                              "\t\t\t<description>" . $post->excerpt . "</description>\n" .
                              "\t\t</item>\n";
 
