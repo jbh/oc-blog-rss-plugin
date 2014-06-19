@@ -2,4 +2,6 @@
 1.0.2: Fixed the rss.xml file to update when saving creating or deleting a blog post
 1.0.3: Makes the rss.xml file update when saving the RSS Feed settings
 1.0.4: Updates the conditional statement for the feed burner address
-1.0.5: Updates the generation of XML
+1.0.5:
+    - Updates the generation of XML
+    - Updates pubDate to be RFC822

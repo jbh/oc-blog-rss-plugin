@@ -80,7 +80,7 @@ class Plugin extends PluginBase
                              "\t\t\t<title>" . $post->title . "</title>\n" .
                              "\t\t\t<link>" . Settings::get('link') . Settings::get('postPage') . "/" . $post->slug . "</link>\n" .
                              "\t\t\t<guid>" . Settings::get('link') . Settings::get('postPage') . "/" . $post->slug . "</guid>\n" .
-                             "\t\t\t<pubDate>" . $published->format('D, d M Y H:i:s T') . "</pubDate>\n" .
+                             "\t\t\t<pubDate>" . $published->format(DateTime::RFC822) . "</pubDate>\n" .
                              "\t\t\t<description>" . $post->excerpt . "</description>\n" .
                              "\t\t</item>\n";
 
