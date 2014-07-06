@@ -7,4 +7,4 @@
 1.0.4: Updates pubDate to be RFC822
 1.0.5: Patch for valid RSS XML
 1.0.6: Fixes versioning
-
+1.0.7: Allows for full post content

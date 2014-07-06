@@ -36,3 +36,12 @@ tabs:
             placeholder: /blog/post
             comment:  The post page for linking in RSS
             description:  The post page for linking in RSS
+
+        showFullPostContent:
+            tab: Blog Information
+            label: Show full post content?
+            type: checkbox
+            span: left
+            default: true
+            comment: Uncheck if you want only the excerpt to be displayed in the xml
+            description: Uncheck if you want only the excerpt to be displayed in the xml

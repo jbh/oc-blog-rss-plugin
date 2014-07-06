@@ -75,13 +75,14 @@ class Plugin extends PluginBase
         foreach($this->loadPosts() as $post)
         {
             $published = DateTime::createFromFormat('Y-m-d H:i:s', $post->published_at);
+            $description = Settings::get('showFullPostContent') ? $post->content : $post->excerpt;
 
             $fileContents .= "\t\t<item>\n" .
                              "\t\t\t<title>" . $post->title . "</title>\n" .
                              "\t\t\t<link>" . Settings::get('link') . Settings::get('postPage') . "/" . $post->slug . "</link>\n" .
                              "\t\t\t<guid>" . Settings::get('link') . Settings::get('postPage') . "/" . $post->slug . "</guid>\n" .
                              "\t\t\t<pubDate>" . $published->format(DateTime::RFC2822) . "</pubDate>\n" .
-                             "\t\t\t<description>" . $post->excerpt . "</description>\n" .
+                             "\t\t\t<description>" . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . "</description>\n" .
                              "\t\t</item>\n";
 
         }
