@@ -47,7 +47,7 @@ The Site and Blog information is used during the creation of the RSS xml file:
   + Icon Class(es) - This is the icon class(es). It is used for the RSS link: `<a><i class="icon icon-rss"></i></a>`. If left blank, the link will just display the default link text.
 
 ```twig
-<a href="{{ feedBurnerAddress ? feedBurnerLink : defaultRssLink}}" target="_blank">
+<a href="{{ feedBurnerAddress ? feedBurnerLink : defaultRssLink }}" target="_blank">
     {% if iconClass %}
         <i class="{{ iconClass }}"></i>
     {% else %}
