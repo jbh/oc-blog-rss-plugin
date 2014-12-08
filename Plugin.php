@@ -8,6 +8,7 @@ use Controller;
 use Event;
 use System\Classes\PluginBase;
 use SoBoRed\Rss\Models\Settings;
+use October\Rain\Support\Markdown;
 
 class Plugin extends PluginBase
 {
@@ -76,6 +77,7 @@ class Plugin extends PluginBase
         {
             $published = DateTime::createFromFormat('Y-m-d H:i:s', $post->published_at);
             $description = Settings::get('showFullPostContent') ? $post->content : $post->excerpt;
+            $description = Markdown::parse(trim($input));
 
             $fileContents .= "\t\t<item>\n" .
                              "\t\t\t<title>" . $post->title . "</title>\n" .
