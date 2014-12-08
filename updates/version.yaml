@@ -8,3 +8,6 @@
 1.0.5: Patch for valid RSS XML
 1.0.6: Fixes versioning
 1.0.7: Allows for full post content
+1.0.8:
+    - Changed having to where to help database type compatibility
+    - Updated the output to parse markdown
