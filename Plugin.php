@@ -99,7 +99,7 @@ class Plugin extends PluginBase
     {
         $posts = Db::table('rainlab_blog_posts')
                      ->orderBy('published_at', 'desc')
-                     ->having('published', '=', '1')
+                     ->where('published', '=', '1')
                      ->get();
 
         return $posts;
