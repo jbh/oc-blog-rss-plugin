@@ -77,7 +77,7 @@ class Plugin extends PluginBase
         {
             $published = DateTime::createFromFormat('Y-m-d H:i:s', $post->published_at);
             $description = Settings::get('showFullPostContent') ? $post->content : $post->excerpt;
-            $description = Markdown::parse(trim($input));
+            $description = Markdown::parse(trim($description));
 
             $fileContents .= "\t\t<item>\n" .
                              "\t\t\t<title>" . $post->title . "</title>\n" .
