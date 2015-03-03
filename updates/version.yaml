@@ -11,3 +11,4 @@
 1.0.8:
     - Changed having to where to help database type compatibility
     - Updated the output to parse markdown
+1.0.9: Update to work with new RC version of October.
