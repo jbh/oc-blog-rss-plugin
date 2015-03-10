@@ -12,7 +12,9 @@ use SoBoRed\Rss\Models\Settings;
 
 class Plugin extends PluginBase
 {
-    
+    /**
+     * @var array Plugin dependencies
+     */
     public $require = ['RainLab.Blog'];
 
     public function pluginDetails()
