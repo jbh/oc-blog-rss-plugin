@@ -37,13 +37,13 @@ class Plugin extends PluginBase
     public function boot()
     {
         // Event Listeners for RainLab Blog
-        Event::listen('eloquent.created: RainLab\Blog\Models\Post', function($model) {
+        Event::listen('eloquent.created: *\Blog\Models\Post', function($model) {
             $this->createRss();
         });
-        Event::listen('eloquent.saved: RainLab\Blog\Models\Post', function($model) {
+        Event::listen('eloquent.saved: *\Blog\Models\Post', function($model) {
             $this->createRss();
         });
-        Event::listen('eloquent.deleted: RainLab\Blog\Models\Post', function($model) {
+        Event::listen('eloquent.deleted: *\Blog\Models\Post', function($model) {
             $this->createRss();
         });
 
@@ -103,9 +103,8 @@ class Plugin extends PluginBase
 
     protected function loadPosts()
     {
-        $posts = Db::table('rainlab_blog_posts')
+        $posts = \RainLab\Blog\Models\Post::isPublished()
                      ->orderBy('published_at', 'desc')
-                     ->where('published', '=', '1')
                      ->get();
 
         return $posts;
