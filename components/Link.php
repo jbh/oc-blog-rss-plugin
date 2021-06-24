@@ -60,9 +60,8 @@ class Link extends ComponentBase
 
     protected function loadPosts()
     {
-        $posts = Db::table('rainlab_blog_posts')
+        $posts = \RainLab\Blog\Models\Post::isPublished()
                      ->orderBy('published_at', 'desc')
-                     ->where('published', '=', '1')
                      ->get();
 
         return $posts;
